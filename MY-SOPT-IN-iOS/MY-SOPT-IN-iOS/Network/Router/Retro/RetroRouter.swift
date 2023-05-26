@@ -11,7 +11,7 @@ import Alamofire
 
 enum RetroRouter {
     case getTotal(month: Int)
-    case postAdd(isPublic: String, descRoutine: String, descBest: String, descSelf: String, writtenDate: String)
+    case postAdd(isPublic: String, descRoutine: String?, descBest: String?, descSelf: String?, writtenDate: String)
 }
 
 extension RetroRouter: BaseTargetType {

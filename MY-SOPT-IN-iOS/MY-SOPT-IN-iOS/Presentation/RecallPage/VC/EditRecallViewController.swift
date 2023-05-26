@@ -97,9 +97,9 @@ final class EditRecallViewController: UIViewController {
     @objc
     private func tappedSaveEditRecall() {
         RetroAPI.shared.postAddRetro(dateRequest: ["isPublic" : "true",
-                                                   "descRoutine" : recallView.recallTextView,
-                                                   "descBest" : recallView.bestTextView,
-                                                   "descSelf" : recallView.wantsayTextView,
+                                                   "descRoutine" : recallView.recallTextView.text,
+                                                   "descBest" : recallView.bestTextView.text,
+                                                   "descSelf" : recallView.wantsayTextView.text,
                                      "writtenDate" : "2023-05-11"], completion: { result in
                 switch result {
                 case .success(_):
