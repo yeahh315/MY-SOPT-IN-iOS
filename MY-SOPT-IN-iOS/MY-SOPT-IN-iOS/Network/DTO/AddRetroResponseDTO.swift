@@ -14,19 +14,14 @@ struct AddRetroResponseDTO: Codable {
 }
 
 struct AddRetroResponseData: Codable {
-    let routineID: Int
-    let routineName, routineAt: String
-    
+    let retrospectID: Int
+    let descRoutine, descBest, descSelf, writtenDate: String
+    let dataPublic, isPublic: Bool
+
     enum CodingKeys: String, CodingKey {
-        let retrospectID: Int
-        let descRoutine, descBest, descSelf, writtenDate: String
-        let dataPublic, isPublic: Bool
-        
-        enum CodingKeys: String, CodingKey {
-            case retrospectID = "retrospectId"
-            case descRoutine, descBest, descSelf, writtenDate
-            case dataPublic = "public"
-            case isPublic
-        }
+        case retrospectID = "retrospectId"
+        case descRoutine, descBest, descSelf, writtenDate
+        case dataPublic = "public"
+        case isPublic
     }
 }

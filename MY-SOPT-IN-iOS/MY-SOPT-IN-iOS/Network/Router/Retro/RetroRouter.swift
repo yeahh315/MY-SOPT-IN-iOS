@@ -11,7 +11,7 @@ import Alamofire
 
 enum RetroRouter {
     case getTotal(month: Int)
-    case postAdd
+    case postAdd(isPublic: String, descRoutine: String, descBest: String, descSelf: String, writtenDate: String)
 }
 
 extension RetroRouter: BaseTargetType {
@@ -38,7 +38,7 @@ extension RetroRouter: BaseTargetType {
         switch self {
         case .getTotal(let month):
             return .query(["month": month])
-        case .postAdd(let isPublic, let descRoutine, let descBest, let descSelf, let writtenDate)
+        case .postAdd(let isPublic, let descRoutine, let descBest, let descSelf, let writtenDate):
             return .body(["isPublic" : isPublic,
                           "descRoutine" : descRoutine,
                           "descBest" : descBest,

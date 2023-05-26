@@ -44,6 +44,7 @@ final class MainPageViewController: UIViewController {
         setStyle()
         setHierarchy()
         setLayout()
+        
     }
     
     // MARK: - Methods

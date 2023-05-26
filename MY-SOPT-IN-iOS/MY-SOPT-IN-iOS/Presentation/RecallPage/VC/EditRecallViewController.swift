@@ -34,14 +34,15 @@ final class EditRecallViewController: UIViewController {
         $0.titleLabel?.font = UIFont.subtitleFont()
         $0.setTitleColor(UIColor.Primary.primary_900, for: .normal)
         $0.backgroundColor = UIColor.Primary.primary
+        $0.addTarget(self, action: #selector(tappedSaveEditRecall), for: .touchUpInside)
     }
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         
+        setUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,10 +86,28 @@ final class EditRecallViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(71)
         }
+        
     }
     
     @objc
     private func popToEditRecallViewController() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func tappedSaveEditRecall() {
+        RetroAPI.shared.postAddRetro(dateRequest: ["isPublic" : "true",
+                                                   "descRoutine" : recallView.recallTextView,
+                                                   "descBest" : recallView.bestTextView,
+                                                   "descSelf" : recallView.wantsayTextView,
+                                     "writtenDate" : "2023-05-11"], completion: { result in
+                switch result {
+                case .success(_):
+                    print("Success")
+                default:
+                    print("Failed")
+                    return
+                }
+            })
     }
 }
